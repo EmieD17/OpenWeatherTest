@@ -89,6 +89,12 @@ namespace OpenWeatherAPI
             var query = HttpUtility.ParseQueryString(uriBuilder.Query);
             query["q"] = "Shawinigan"; // Shawinigan
             query["units"] = "metric";
+
+            if (String.IsNullOrEmpty(ApiKey))
+            {
+                throw new ArgumentException("ApiKey est vide ou null");
+            }
+
             query["appid"] = ApiKey;
 
             uriBuilder.Query = query.ToString();
