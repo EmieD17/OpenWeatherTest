@@ -25,7 +25,7 @@ namespace WeatherApp.Services
 
             WindDataModel wdm = new WindDataModel();
 
-            wdm.DateTime = DateTime.FromBinary(currentModel.DateTime);
+            wdm.DateTime = DateTime.UnixEpoch.AddSeconds(currentModel.DateTime);
             wdm.Direction = currentModel.Wind.Deg;
             wdm.MetrePerSec = currentModel.Wind.Speed;
 
