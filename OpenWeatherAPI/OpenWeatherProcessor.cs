@@ -60,6 +60,12 @@ namespace OpenWeatherAPI
             query["lat"] = Latitude; // Shawinigan
             query["lon"] = Longitude;
             query["units"] = "metric";
+
+            if (String.IsNullOrEmpty(ApiKey))
+            {
+                throw new ArgumentException("ApiKey est vide ou null");
+            }
+
             query["appid"] = ApiKey;
 
 
