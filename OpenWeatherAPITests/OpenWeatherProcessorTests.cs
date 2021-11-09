@@ -7,17 +7,24 @@ namespace OpenWeatherAPITests
 {
     public class OpenWeatherProcessorTests
     {
-        [Fact]
-        public async Task GetOneCallAsync_IfApiKeyEmptyOrNull_ThrowArgumentException()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        public async Task GetOneCallAsync_IfApiKeyEmptyOrNull_ThrowArgumentException(string key)
         {
+           
             OpenWeatherProcessor openWeatherProcessor = OpenWeatherProcessor.Instance;
+            openWeatherProcessor.ApiKey = key;
 
             await Assert.ThrowsAsync<ArgumentException>(openWeatherProcessor.GetOneCallAsync);
         }
-        [Fact]
-        public async Task GetCurrentWeatherAsync_IfApiKeyEmptyOrNull_ThrowArgumentException()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        public async Task GetCurrentWeatherAsync_IfApiKeyEmptyOrNull_ThrowArgumentException(string key)
         {
             OpenWeatherProcessor openWeatherProcessor = OpenWeatherProcessor.Instance;
+            openWeatherProcessor.ApiKey = key;
 
             await Assert.ThrowsAsync<ArgumentException>(openWeatherProcessor.GetCurrentWeatherAsync);
         }
