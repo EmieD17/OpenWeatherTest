@@ -11,7 +11,7 @@ namespace WeatherApp
     {
         public App()
         {
-            string key = AppConfiguration.GetValue("ApiKey");
+            string key = AppConfiguration.GetValue("");
         }
     }
 }
